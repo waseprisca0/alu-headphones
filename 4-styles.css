@@ -1,0 +1,498 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
+  8. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-family: "Source Sans 3", sans-serif;
+}
+
+/* custom css styles */
+
+.menu {
+  width: 20px;
+  height: 14px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.menu__line {
+  width: 14px;
+  background-color: white;
+  height: 2px;
+  border-radius: 22px;
+  transition: all 0.3s ease-in-out;
+}
+.menu--before::before,
+.menu--after::after {
+  content: "";
+  position: absolute;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+.menu--before::before {
+  width: 20px;
+  height: 2px;
+  border-radius: 22px;
+  top: 0px;
+}
+.menu--after::after {
+  width: 18px;
+  height: 2px;
+  border-radius: 22px;
+  bottom: 0px;
+}
+
+.header {
+  display: flex;
+  max-width: 1040px;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  right: 0;
+  left: 0;
+  top: 28px;
+}
+.header__nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  list-style: none;
+}
+
+.header__nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.header__nav-link--hover:hover,
+.header__nav-link--active:active {
+  color: #ff6565;
+}
+.header__nav--mobile {
+  display: none;
+}
+
+/* input[type="checkbox"] {
+  display: none;
+} */
+#menu {
+  position: absolute;
+  z-index: 0;
+  opacity: 0;
+}
+
+.header__menu {
+  position: relative;
+  z-index: 4;
+  display: none;
+}
+
+.header__nav--mobile {
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: -45px;
+  width: fit-content;
+  transform: translateY(100%);
+  flex-direction: column;
+  gap: 20px;
+}
+
+.banner {
+  background-image: url("/images/headphones_hero_1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: end;
+  padding-bottom: 118px;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.banner__container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.title {
+  font-size: 32px;
+}
+
+.banner__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.banner__header-subtext {
+  font-weight: bold;
+}
+.banner__button {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  margin-bottom: 65px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.button {
+  width: 162px;
+  height: 44px;
+  background-color: #ff6565;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  text-transform: uppercase;
+  border-radius: 22px;
+  box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.5);
+}
+.button--hover:hover,
+.button--active:active {
+  opacity: 0.9;
+}
+
+.banner__description {
+  text-align: center;
+}
+
+@media screen and (max-width: 520px) {
+  .header {
+    justify-content: center;
+  }
+  .header__menu {
+    display: block;
+    position: absolute;
+    left: 20px;
+  }
+  .header__nav {
+    display: none;
+  }
+
+  #menu:checked + .header__menu + .header__nav--mobile {
+    display: flex;
+  }
+
+  #menu:checked + .header__menu .menu > .menu__line {
+    display: none;
+  }
+
+  #menu:checked + .header__menu .menu--before::before {
+    top: initial;
+    transform: translateY(50%) rotate(45deg);
+    width: 100%;
+  }
+  #menu:checked + .header__menu .menu--after::after {
+    top: initial;
+    transform: translateY(-5px) rotate(-45deg);
+    width: 100%;
+  }
+}
+
+.services {
+  padding-top: 110px;
+  padding-bottom: 110px;
+  max-width: 1040px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+.services__header {
+  margin-bottom: 40px;
+}
+.services__title {
+  color: #071629;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+.services__description {
+  color: #071629;
+  margin-bottom: 96px;
+}
+.services__list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.title--sm {
+  font-size: 18px;
+}
+.text--sm {
+  font-size: 14px;
+}
+
+.services__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.services__item-title {
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+.services__item-description {
+  max-width: 210px;
+}
+
+@media screen and (max-width: 450px) {
+  .services__list {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+.results {
+  background-image: url("/images/headphones_hero_2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.results__container {
+  padding-top: 110px;
+  padding-bottom: 110px;
+  max-width: 1040px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+.results__header {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.results__title {
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+.results__description {
+  margin-bottom: 96px;
+  max-width: 640px;
+  text-align: center;
+}
+.results__list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.results__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 190px;
+  height: 190px;
+}
+.results__item-shape {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.results__item-title {
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+.results__item-description {
+  max-width: 210px;
+}
+.results__item-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.results__item-title {
+  margin-top: 22px;
+  margin-bottom: -5px;
+}
+
+.title--xl {
+  font-size: 46px;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 450px) {
+  .results__list {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+}
+
+.contact {
+  padding-top: 110px;
+  padding-bottom: 110px;
+  max-width: 1040px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin: 0 auto;
+  text-align: center;
+  color: #071629;
+}
+.contact__title {
+  margin-bottom: 56px;
+  color: #071629;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  max-width: 335px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.contact__label {
+  display: flex;
+  flex-direction: column;
+  text-align: initial;
+  color: #071629;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: capitalize;
+
+
+}
+
+.contact__input {
+  border: none;
+  border-bottom: 1px solid #07162935;
+  outline: none;
+  margin-top: -2px;
+  display: block;
+  height: 24px;
+}
+
+.contact__button {
+  margin-top: 20px;
+  align-self: center;
+}
+
+.footer {
+  background: #071629;
+  width: 100%;
+}
+
+.footer__container {
+  max-width: 1040px;
+  padding-right: 20px;
+  padding-left: 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.footer__links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 116px;
+  margin-bottom: 62px;
+}
+
+.footer__trademark {
+  font-size: 12px;
+  color: #ffffff;
+  opacity: 0.5;
+  opacity: 0.3517;
+  text-align: center;
+  padding-bottom: 35px;
+}
+
+@media screen and (max-width: 420px) {
+  .footer__links {
+    flex-direction: column;
+    gap: 45px;
+    align-items: center;
+    padding-top: 48px;
+  }
+}
